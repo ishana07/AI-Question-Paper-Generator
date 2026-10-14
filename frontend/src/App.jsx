@@ -1,5 +1,7 @@
 import { useState } from "react";
 import "./App.css";
+const API_BASE_URL =
+  import.meta.env.VITE_API_URL || "http://127.0.0.1:8000";
 
 function App() {
   const [files, setFiles] = useState([]);
@@ -57,7 +59,7 @@ function App() {
     setQuestions("");
 
     try {
-      const response = await fetch("http://127.0.0.1:8000/generate", {
+      const response = await fetch(`${API_BASE_URL}/generate`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -95,7 +97,7 @@ function App() {
   setError("");
 
   try {
-    const response = await fetch("http://127.0.0.1:8000/generate-solution", {
+    const response = await fetch(`${API_BASE_URL}/generate-solution`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
